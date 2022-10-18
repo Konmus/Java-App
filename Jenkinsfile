@@ -1,7 +1,7 @@
 pipeline {
     agent any
 
-    enviroment {
+    environment {
         ORG_NAME = 'Demo'
         APP_NAME = 'demo-java'
         APP_VERSION = '0.0.1-SNAPSHOT'
@@ -27,12 +27,14 @@ pipeline {
         }
         stage('Unit Test'){
             steps{
-                sh 'gradle test'
+                sh './gradlew test'
             }
         }
-        stage('Build'){
+        stage('Deploy to tomcat'){
             steps{
-                sh './gradlew clean build'
+                sshagent(['tomcat']){
+                    sh 'scp -o StrictHostKeyChecking=no target/*/.jar vagrant@172.16.1.51:/usr/local/apache-tomcat-10.0.27/webapps/webapp.jar'
+                }
             }
         }
     }
