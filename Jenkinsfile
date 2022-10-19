@@ -4,7 +4,7 @@ pipeline {
     environment {
         ORG_NAME = 'Demo'
         APP_NAME = 'demo-java'
-        APP_VERSION = '0.0.1-SNAPSHOT'
+        APP_VERSION = '0.1'
         APP_LISTENING_PORT = '8080'
     }
     stages{
@@ -26,7 +26,7 @@ pipeline {
         stage('Deploy to tomcat'){
             steps{
                 sshagent(['tomcat']){
-                    sh 'scp ./build/libs/*.jar vagrant@172.16.1.51:~/apache-tomcat-10.0.27/webapps/webapp.jar'
+                    sh 'scp ./build/libs/*.war vagrant@172.16.1.51:~/apache-tomcat-10.0.27/webapps/webapp.war'
                 }
             }
         }

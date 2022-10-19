@@ -3,12 +3,13 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.14.RELEASE'
 	id 'java'
 	id 'application'
+	id 'war'
 	id 'org.owasp.dependencycheck' version '7.2.1'
 
 }
 
 group = 'com.example'
-version = '0.0.1-SNAPSHOT'
+version = '0.1'
 sourceCompatibility = '11'
 
 repositories {
@@ -32,6 +33,10 @@ tasks.named('test') {
 }
 
 jar {
+	enabled = false
+}
+
+war {
 	enabled = false
 }
 
