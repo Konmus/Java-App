@@ -23,6 +23,14 @@ public class ApplicationTests {
 	private MockMvc mockMvc;
 
 	@Test
+	@DisplayName("Hello from me")
+	public void testHelloStartpoint() throws Exception {
+		mockMvc.perform(get("/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("Hello from me")));
+	}
+
+	@Test
 	@DisplayName("the hello greeting should be correct when returned by the server endpoint")
 	public void testHelloEndpoint() throws Exception {
 		mockMvc.perform(get("/hello"))

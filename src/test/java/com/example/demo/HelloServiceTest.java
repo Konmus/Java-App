@@ -17,6 +17,12 @@ public class HelloServiceTest {
 	private HelloController helloController;
 
 	@Test
+	@DisplayName("the string should be correct when returned by the controller")
+	public void testHelloControllerStart() {
+		assertEquals("Hello from me", helloController);
+	}
+
+	@Test
 	@DisplayName("the hello greeting should be correct when returned by the controller")
 	public void testHelloController() {
 		assertEquals("Hello!", helloController.getHelloGreeting());
