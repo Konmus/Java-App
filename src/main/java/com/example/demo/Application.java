@@ -9,7 +9,6 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 @SpringBootApplication(exclude = {ErrorMvcAutoConfiguration.class})
 public class Application extends SpringBootServletInitializer{
 	public static void main(String[] args) {
-		System.setProperty("server.servlet.context-path", "/app");
 		SpringApplication.run(Application.class, args);
 	}
 	@Override
