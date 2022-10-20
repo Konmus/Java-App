@@ -32,7 +32,7 @@ pipeline {
             steps{
                 sshagent(['tomcat']){
                     sh 'scp ./build/libs/*.war vagrant@172.16.1.51:~/$APP_NAME.war'
-                    sh 'ssh vagrant@172.16.1.51 $remoteExec'
+                    sh 'ssh vagrant@172.16.1.51 $remoteExec > /dev/null 2>&1 &'
                 }
             }
         }
