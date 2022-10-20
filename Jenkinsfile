@@ -8,7 +8,7 @@ pipeline {
         APP_LISTENING_PORT = '8080'
         remoteExec= 
         """
-            sudo mv $APP_NAME.war ./apache-tomcat-10.0.27/webapps/
+            sudo mv konmus.war ./apache-tomcat-10.0.27/webapps/
 
         """
     }
