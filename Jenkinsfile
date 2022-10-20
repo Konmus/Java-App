@@ -8,7 +8,7 @@ pipeline {
         APP_LISTENING_PORT = '8080'
         remoteExec= 
         """
-        java -jar ~/apache-tomcat-10.0.27/webapps/app.war 
+            mv app.war ./apache-tomcat-10.0.27/webapps/
 
         """
     }
@@ -32,8 +32,7 @@ pipeline {
             steps{
                 sshagent(['tomcat']){
                     sh 'scp ./build/libs/*.war vagrant@172.16.1.51:~/app.war'
-                    sh 'ssh vagrant@172.16.1.51'
-                    sh 'mv app.war ./apache-tomcat-10.0.27/webapps/'
+                    sh 'ssh vagrant@172.16.1.51 $remoteExec'
                 }
             }
         }
