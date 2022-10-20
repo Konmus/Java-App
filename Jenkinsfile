@@ -2,13 +2,13 @@ pipeline {
     agent any
 
     environment {
-        ORG_NAME = 'Demo'
-        APP_NAME = 'demo-java'
+        ORG_NAME = 'konmus'
+        APP_NAME = 'konmus'
         APP_VERSION = '0.1'
         APP_LISTENING_PORT = '8080'
         remoteExec= 
         """
-            sudo mv app.war ./apache-tomcat-10.0.27/webapps/
+            sudo mv $APP_NAME.war ./apache-tomcat-10.0.27/webapps/
 
         """
     }
@@ -31,7 +31,7 @@ pipeline {
         stage('Deploy to tomcat'){
             steps{
                 sshagent(['tomcat']){
-                    sh 'scp ./build/libs/*.war vagrant@172.16.1.51:~/app.war'
+                    sh 'scp ./build/libs/*.war vagrant@172.16.1.51:~/$APP_NAME.war'
                     sh 'ssh vagrant@172.16.1.51 $remoteExec'
                 }
             }
