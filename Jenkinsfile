@@ -33,7 +33,7 @@ pipeline {
                 sshagent(['tomcat']){
                     sh 'scp ./build/libs/*.war vagrant@172.16.1.51:~/archive/app.war'
                     sh 'ssh vagrant@172.16.1.51'
-                    sh 'mv ~/archive/app.war ~/apache-tomcat-10.0.27/webapps/app.war'
+                    sh 'mv /archive/app.war ./apache-tomcat-10.0.27/webapps/'
                 }
             }
         }
