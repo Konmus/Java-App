@@ -19,7 +19,7 @@ public class HelloServiceTest {
 	@Test
 	@DisplayName("the string should be correct when returned by the controller")
 	public void testHelloControllerStart() {
-		assertEquals("Hello from me", helloController);
+		assertEquals("Hello from me", helloController.index());
 	}
 
 	@Test
