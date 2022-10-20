@@ -5,12 +5,12 @@ pipeline {
         ORG_NAME = 'konmus'
         APP_NAME = 'konmus'
         APP_VERSION = '0.1'
-        APP_LISTENING_PORT = '8080'
+        APP_LISTENING_PORT = '80'
         remoteExec= 
         """
-
             sudo java -jar ~/konmus.war >> /dev/null
         """
+        /// >> /dev/null without stdout 
     }
     stages{
         stage('Git Checkout'){
