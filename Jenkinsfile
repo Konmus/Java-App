@@ -9,7 +9,7 @@ pipeline {
         remoteExec= 
         """
 
-            sudo java -jar ~/konmus.war > /dev/null 2>&1 &
+            sudo java -jar ~/konmus.war  &
         """
     }
     stages{
