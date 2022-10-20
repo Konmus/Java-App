@@ -26,7 +26,8 @@ pipeline {
         stage('Deploy to tomcat'){
             steps{
                 sshagent(['tomcat']){
-                    sh 'scp ./build/libs/*.war vagrant@172.16.1.51:~/apache-tomcat-10.0.27/webapps/app.war'
+                    sh 'scp ./build/libs/*.war vagrant@172.16.1.51:~/apache-tomcat-10.0.27/webapps/app.war '
+                    sh 'java -jar vagrant@172.16.1.51:~/apache-tomcat-10.0.27/webapps/app.war'
                 }
             }
         }
