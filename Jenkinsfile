@@ -33,6 +33,7 @@ pipeline {
                 sshagent(['tomcat']){
                     sh 'scp ./build/libs/*.war vagrant@172.16.1.51:~/apache-tomcat-10.0.27/webapps/app.war '
                     sh 'ssh vagrant@172.16.1.51 $remoteExec'
+                    exit 0
                 }
             }
         }
