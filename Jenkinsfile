@@ -19,10 +19,10 @@ pipeline {
                     image 'gitguardian/ggshield:latest'
                 }
             }
-                environment{
+            environment{
                     GITGUARDIAN_API_KEY = credentials('gitguardian')
                 }
-                steps{
+            steps{
                     sh 'ggshield secret scan ci'
                 }
         }
