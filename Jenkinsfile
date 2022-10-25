@@ -18,13 +18,13 @@ pipeline {
                 docker{
                     image 'gitguardian/ggshield:latest'
                 }
-                enviroment{
+            }
+                environment{
                     GITGUARDIAN_API_KEY = credentials('gitguardian')
                 }
                 steps{
                     sh 'ggshield secret scan ci'
                 }
-            }
         }
 
         stage('Git Checkout'){
