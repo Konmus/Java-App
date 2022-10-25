@@ -13,6 +13,20 @@ pipeline {
         /// >> /dev/null without stdout 
     }
     stages{
+        stage('GitGuardian Scan'){
+            agent{
+                docker{
+                    image 'gitguardian/ggshield:latest'
+                }
+                enviroment{
+                    GITGUARDIAN_API_KEY = credentials('gitguardian')
+                }
+                steps{
+                    sh 'ggshield secret scan ci'
+                }
+            }
+        }
+
         stage('Git Checkout'){
             steps{
                 git branch: 'master', url: 'https://github.com/Konmus/Java-App.git'
