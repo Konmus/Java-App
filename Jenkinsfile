@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent none
 
     environment {
         ORG_NAME = 'konmus'
