@@ -8,6 +8,7 @@ pipeline {
         APP_LISTENING_PORT = '80'
         remoteExec= 
         """
+            sudo ps -C java -o pid
             sudo java -jar ~/konmus.war >> /dev/null
         """
         /// >> /dev/null without stdout 
@@ -45,8 +46,7 @@ pipeline {
         stage('Deploy to tomcat'){
             steps{
                 sshagent(['tomcat']){
-                    sh 'scp ./build/libs/*.war vagrant@172.16.1.51:~/$APP_NAME.war'
-                    sh 'ssh vagrant@172.16.1.51 $remoteExec '
+                    sh 'scp ./build/libs/*.war vagrant@172.16.1.51:/usr/share/tomcat/webapps/$APP_NAME.war'
                 }
             }
         }
